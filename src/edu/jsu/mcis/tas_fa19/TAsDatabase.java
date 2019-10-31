@@ -7,11 +7,26 @@ import java.util.GregorianCalendar;
 
 public class TAsDatabase {
     
+    
+    
     Connection conn;
     
     String url = "jdbc:mysql://localhost/tas";
     String username = "CS310";
     String password = "CS310";
     
+    Class.forname("com.mysql.jdbc.Driver");
     
+    
+    
+
+public Badge getBadge(String id){
+
+}
+
+public Shift getShift(int Shift){
+    
+}
+
+
 }
