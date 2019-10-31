@@ -8,6 +8,7 @@ public class Shift {
     private String description;
     private LocalTime start;
     private LocalTime stop;
+    private int shiftduration;
     private int interval;
     private int graceperiod;
     private int dock;
@@ -30,6 +31,10 @@ public class Shift {
 
     public LocalTime getStop() {
         return stop;
+    }
+    
+    public int shiftduration() {
+        return shiftduration;
     }
 
     public int getInterval() {
@@ -61,11 +66,12 @@ public class Shift {
     }
    
     
-    public Shift(int id, String description, LocalTime start, LocalTime stop, int interval, int graceperiod, int dock, LocalTime lunchstart, LocalTime lunchstop, int lunchdeduct, int lunchduration) {
+    public Shift(int id, String description, LocalTime start, LocalTime stop, int shiftduration, int interval, int graceperiod, int dock, LocalTime lunchstart, LocalTime lunchstop, int lunchdeduct, int lunchduration) {
         this.id = id;
         this.description = description;
         this.start = start;
         this.stop = stop;
+        this.shiftduration = shiftduration;
         this.interval = interval;
         this.graceperiod = graceperiod;
         this.dock = dock;
@@ -80,13 +86,13 @@ public class Shift {
     public String toString(){
         
     StringBuilder s = new StringBuilder();
-    s.append ("Shift");
-    //something
+    s.append (description);
+    s.append (": ");
     s.append (start);
     s.append (" - ");
     s.append (stop);
     s.append (" (");
-    s.append (interval);
+    s.append (shiftduration);
     s.append (" minutes");
     s.append (") ");
     s.append ("; ");
