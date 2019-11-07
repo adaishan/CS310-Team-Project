@@ -1,4 +1,5 @@
 package edu.jsu.mcis.tas_fa19;
+import java.sql.Timestamp;
 import java.util.*;
 import java.text.*;
 /**
@@ -31,6 +32,11 @@ public class Punch {
 
     public GregorianCalendar getOriginal_time_stamp() {
         return original_time_stamp;
+    }
+    
+    public Timestamp printOriginalTimestamp() {    
+        Timestamp t = null;
+        return t;
     }
     
     public String toString(){
