@@ -4,65 +4,47 @@ import java.time.LocalTime;
 
 public class Shift {
     
-    private int id;
+    private int id, interval, graceperiod, lunchdeduct, dock;
+    private int shiftduration, lunchduration;
     private String description;
-    private LocalTime start;
-    private LocalTime stop;
-    private int shiftduration;
-    private int interval;
-    private int graceperiod;
-    private int dock;
-    private LocalTime lunchstart;
-    private LocalTime lunchstop;
-    private int lunchdeduct;
-    private int lunchduration;
+    private LocalTime start, stop, lunchstart, lunchstop;
 
     public int getId() {
         return id;
     }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public LocalTime getStart() {
-        return start;
-    }
-
-    public LocalTime getStop() {
-        return stop;
-    }
-    
-    public int shiftduration() {
-        return shiftduration;
-    }
-
     public int getInterval() {
         return interval;
     }
-
     public int getGraceperiod() {
         return graceperiod;
     }
-
-    public int getDock() {
-        return dock;
-    }
-
-    public LocalTime getLunchstart() {
-        return lunchstart;
-    }
-
-    public LocalTime getLunchstop() {
-        return lunchstop;
-    }
-
     public int getLunchdeduct() {
         return lunchdeduct;
     }
-
+    public int getDock() {
+        return dock;
+    }
+    public int shiftduration() {
+        return shiftduration;
+    }
     public int getLunchduration() {
+        int lunchduration = (int)(((lunchstop.compareTo(lunchstart))));
         return lunchduration;
+    }
+    public String getDescription() {
+        return description;
+    }
+    public LocalTime getStart() {
+        return start;
+    }
+    public LocalTime getStop() {
+        return stop;
+    }
+    public LocalTime getLunchstart() {
+        return lunchstart;
+    }
+    public LocalTime getLunchstop() {
+        return lunchstop;
     }
    
     
