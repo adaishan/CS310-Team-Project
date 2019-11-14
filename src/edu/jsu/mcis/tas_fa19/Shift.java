@@ -74,7 +74,7 @@ public class Shift {
     s.append (" - ");
     s.append (stop);
     s.append (" (");
-    s.append (shiftduration);
+    s.append (stop.compareTo(start));
     s.append (" minutes");
     s.append (") ");
     s.append ("; ");
