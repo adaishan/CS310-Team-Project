@@ -132,8 +132,30 @@ public class TASDatabase {
     
      public Shift getShift(int shiftid) {
         Shift s = null;
+        
+        // i made the hashmap like the one for badge
+        try {
+        
+         HashMap<String, String> parameters = new HashMap<>();
+                    
+                    parameters.put("id", String.valueOf(resultset.getInt("id")));
+                    parameters.put("description", resultset.getString("description"));
+                    parameters.put("start", String.valueOf(resultset.getInt("start")));
+                    parameters.put("stop", String.valueOf(resultset.getInt("stop")));
+                    parameters.put("lunchstart", String.valueOf(resultset.getInt("lunchstart")));
+                    parameters.put("lunchstop", String.valueOf(resultset.getInt("lunchstop")));
+                    parameters.put("interval", String.valueOf(resultset.getInt("interval")));
+                    parameters.put("graceperiod", String.valueOf(resultset.getInt("graceperiod")));
+                    parameters.put("dock", String.valueOf(resultset.getInt("dock")));
+                    parameters.put("lunchdeduct", String.valueOf(resultset.getInt("lunchdeduct")));
+                    
+                    s = new Shift (params);
+                            }
+        catch (Exception e) { e.printStackTrace(); }
+        
         return s;
     }
+       
      
     public Shift getShift(Badge b) {
         Shift s = null;
