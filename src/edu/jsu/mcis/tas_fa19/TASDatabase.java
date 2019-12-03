@@ -265,4 +265,8 @@ public class TASDatabase {
         return key;
  
     }
+        
+        public ArrayList<Punch> getDailyPunchList(Badge badge, long ts){
+            
+        }
 }
