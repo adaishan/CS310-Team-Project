@@ -1,6 +1,8 @@
 package edu.jsu.mcis.tas_fa19;
 
 import java.sql.*;
+import java.text.SimpleDateFormat;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 
 public class TASDatabase {
@@ -219,4 +221,48 @@ public class TASDatabase {
         
     }
     
+        public int insertPunch(Punch p) {
+        
+        int key = 0;
+    
+        String badgeid = p.getBadgeid();
+        int terminalid = p.getTerminalid();
+        int punchTypeid = p.getPunchtypeid();
+        long originalTimeStamp = p.getOriginaltimestamp();
+        
+        try {
+            
+            String query =  "insert into punch (terminalid, badgeid, originaltimestamp, punchtypeid) values (?, ?, ?, ?)";
+            
+            PreparedStatement ps = conn.prepareStatement(query, PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.setInt(1, terminalid);
+            ps.setString(2, badgeid);
+            
+            GregorianCalendar ots = new GregorianCalendar();
+            ots.setTimeInMillis(originalTimeStamp);
+            ps.setString(3, (new SimpleDateFormat("yyyy-MM-dd HH:mm:ss")).format(ots.getTime()));
+            
+            ps.setInt(4, punchTypeid);
+            
+            System.err.println("Submitting Query ...");
+        
+            int rows = ps.executeUpdate();
+            
+            if (rows == 1) {
+                
+                System.err.println("Punch Inserted!");
+                
+                ResultSet keys = ps.getGeneratedKeys();
+                if (keys.next()) {
+                    key = keys.getInt(1);
+                }
+                
+            }
+            
+        }        
+        catch (Exception e) { e.printStackTrace(); }
+        
+        return key;
+ 
+    }
 }
